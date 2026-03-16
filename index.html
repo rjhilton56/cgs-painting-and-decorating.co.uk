@@ -15,6 +15,9 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -201,32 +204,54 @@
         <h2 class="section-title">Recent Projects</h2>
         <p class="section-desc">A selection of our recent painting and decorating projects — quality you can see.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-1.jpg" alt="Freshly painted hallway corridor - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Hallway &amp; Corridor</span>
-          </div>
+    </div>
+
+    <!-- Full-width Swiper carousel -->
+    <div class="swiper gallery-swiper" data-animate>
+      <div class="swiper-wrapper">
+
+        <!-- =====================================================
+             TO ADD MORE PHOTOS:
+             1. Upload your image to the images/ folder on GitHub
+             2. Copy one of the blocks below and change:
+                - src="images/YOUR-FILENAME.jpg"
+                - alt="Brief description of the photo"
+                - The caption text inside <span>
+             ===================================================== -->
+
+        <div class="swiper-slide">
+          <img src="images/gallery-1.jpg" alt="Freshly painted hallway - CGS Painting and Decorating" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Hallway &amp; Corridor</span></div>
         </div>
-        <div class="gallery-item gallery-item--tall" data-animate>
-          <img src="images/gallery-2.jpg" alt="Dark feature wall with wood flooring - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Feature Wall</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/gallery-2.jpg" alt="Dark feature wall with wood flooring - CGS Painting and Decorating" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Feature Wall</span></div>
         </div>
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-3.jpg" alt="Painted staircase with white banisters - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Staircase &amp; Banisters</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/gallery-3.jpg" alt="Painted staircase with white banisters - CGS Painting and Decorating" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Staircase &amp; Banisters</span></div>
         </div>
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-4.jpg" alt="Bright hallway with stairs after decoration - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Hallway &amp; Landing</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/gallery-4.jpg" alt="Bright hallway with stairs after decoration - CGS Painting and Decorating" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Hallway &amp; Landing</span></div>
         </div>
+
+        <!-- ADD MORE SLIDES HERE — just copy a block above -->
+
       </div>
+
+      <!-- Navigation arrows -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- Dot pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="container">
       <div class="gallery-cta" data-animate>
         <p>See more of our work on Facebook</p>
         <a href="https://www.facebook.com/share/1ArBJ9NBdK/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -321,7 +346,15 @@
       </div>
       <div class="contact-grid">
         <div class="contact-form-wrap" data-animate>
-          <form class="contact-form" action="https://formspree.io/f/cgswain@outlook.com" method="POST">
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+            <!-- Web3Forms access key — replace YOUR_ACCESS_KEY with the key from web3forms.com -->
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+            <!-- Where replies go -->
+            <input type="hidden" name="subject" value="New Quote Request — CGS Painting &amp; Decorating" />
+            <input type="hidden" name="from_name" value="CGS Website" />
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="botcheck" style="display:none" />
+
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name <span>*</span></label>
@@ -356,9 +389,10 @@
               <label for="message">Tell Us About the Job <span>*</span></label>
               <textarea id="message" name="message" rows="4" placeholder="Describe the work needed, number of rooms, any specific requirements..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn--full">
+            <button type="submit" class="btn btn-primary btn--full" id="submitBtn">
               <i class="fas fa-paper-plane"></i> Send My Request
             </button>
+            <div id="formResult" class="form-result" aria-live="polite"></div>
           </form>
         </div>
         <div class="contact-info" data-animate>
@@ -462,6 +496,7 @@
     <i class="fas fa-phone"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

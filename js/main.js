@@ -3,15 +3,13 @@
    ============================================ */
 
 // === NAVBAR: scroll shadow + active link ===
-const navbar  = document.getElementById('navbar');
+const navbar   = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section[id]');
 
 window.addEventListener('scroll', () => {
-  // Shadow on scroll
   navbar.classList.toggle('scrolled', window.scrollY > 20);
 
-  // Highlight active nav link
   let current = '';
   sections.forEach(sec => {
     if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
@@ -31,7 +29,6 @@ navToggle.addEventListener('click', () => {
   navToggle.setAttribute('aria-expanded', open);
 });
 
-// Close menu when a link is clicked
 navMenu.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navMenu.classList.remove('open');
@@ -40,7 +37,6 @@ navMenu.querySelectorAll('a').forEach(link => {
   });
 });
 
-// Close menu when clicking outside
 document.addEventListener('click', e => {
   if (!navbar.contains(e.target)) {
     navMenu.classList.remove('open');
@@ -49,58 +45,97 @@ document.addEventListener('click', e => {
   }
 });
 
+// === SWIPER CAROUSEL ===
+new Swiper('.gallery-swiper', {
+  loop: true,
+  speed: 700,
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+  slidesPerView: 1,
+  spaceBetween: 0,
+  navigation: {
+    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  keyboard: { enabled: true },
+  a11y: {
+    prevSlideMessage: 'Previous photo',
+    nextSlideMessage: 'Next photo',
+  },
+});
+
 // === SCROLL ANIMATIONS ===
 const animateEls = document.querySelectorAll('[data-animate]');
-
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger siblings within same parent
       const siblings = Array.from(entry.target.parentElement.querySelectorAll('[data-animate]'));
       const idx = siblings.indexOf(entry.target);
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, idx * 80);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 80);
       observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.12 });
-
 animateEls.forEach(el => observer.observe(el));
 
 // === FOOTER YEAR ===
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// === CONTACT FORM ===
-const form = document.querySelector('.contact-form');
+// === WEB3FORMS CONTACT FORM ===
+const form       = document.getElementById('contactForm');
+const submitBtn  = document.getElementById('submitBtn');
+const formResult = document.getElementById('formResult');
+
 if (form) {
   form.addEventListener('submit', async (e) => {
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
+    e.preventDefault();
 
-    // Basic visual feedback
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
-    btn.disabled = true;
+    const originalHTML = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+    submitBtn.disabled  = true;
+    formResult.className = 'form-result';
+    formResult.textContent = '';
 
-    // If using Formspree the default POST will handle it;
-    // this listener just enhances the UX feedback.
-    // Re-enable after 4s as a fallback.
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.disabled = false;
-    }, 4000);
+    try {
+      const data     = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+      });
+      const json = await response.json();
+
+      if (json.success) {
+        formResult.classList.add('success');
+        formResult.textContent = '✓ Message sent! Chris will be in touch shortly.';
+        form.reset();
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch (err) {
+      formResult.classList.add('error');
+      formResult.textContent = 'Something went wrong — please call or email Chris directly.';
+    } finally {
+      submitBtn.innerHTML = originalHTML;
+      submitBtn.disabled  = false;
+    }
   });
 }
 
-// === SMOOTH SCROLL for anchor links ===
+// === SMOOTH SCROLL ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      const offset = 80; // navbar height
-      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
     }
   });
