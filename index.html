@@ -15,6 +15,9 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -55,7 +58,7 @@
     <div class="hero-content">
       <div class="hero-badge">Based in Lincoln &bull; Willing to Travel</div>
       <h1 class="hero-title">Quality Painting &amp;<br/>Decorating You Can Trust</h1>
-      <p class="hero-subtitle">Professional finishes, fair prices, and free quotations.<br/>Serving Lincoln, Lincolnshire &amp; surrounding areas.</p>
+      <p class="hero-subtitle">Professional finishes, fair prices, and free quotations.<br/>Based in Lincoln &amp; willing to travel.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
         <a href="#gallery" class="btn btn-outline">View Our Work</a>
@@ -88,9 +91,9 @@
       <div class="about-grid">
         <div class="about-text" data-animate>
           <div class="section-label">About CGS</div>
-          <h2 class="section-title">A Decorator Who Takes Pride in Every Job</h2>
-          <p>Hi, I'm Chris — the man behind CGS Painting &amp; Decorating. With years of hands-on experience, I've built my reputation on doing the job right, every time. I always aim to give the best results, whether it's a single room refresh or a full home transformation.</p>
-          <p>Based in Lincoln, I'm happy to travel — I've completed jobs across Lincolnshire, Rotherham, Doncaster, and beyond. Distance is never a barrier when it comes to quality work.</p>
+          <h2 class="section-title">A Family Team Who Take Pride in Every Job</h2>
+          <p>Hi, we're Chris and his wife — the team behind CGS Painting &amp; Decorating. With years of hands-on experience, we've built our reputation on doing the job right, every time. We always aim to give the best results, whether it's a single room refresh or a full home transformation.</p>
+          <p>Based in Lincoln, we're happy to travel — distance is never a barrier when it comes to quality work.</p>
           <p>Every quote is free, every price is fair, and every finish is something you'll be proud of.</p>
           <div class="about-highlights">
             <div class="highlight">
@@ -201,32 +204,145 @@
         <h2 class="section-title">Recent Projects</h2>
         <p class="section-desc">A selection of our recent painting and decorating projects — quality you can see.</p>
       </div>
-      <div class="gallery-grid">
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-1.jpg" alt="Freshly painted hallway corridor - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Hallway &amp; Corridor</span>
-          </div>
+    </div>
+
+    <!-- Full-width Swiper carousel -->
+    <div class="swiper gallery-swiper" data-animate>
+      <div class="swiper-wrapper">
+
+        <!-- =====================================================
+             TO ADD MORE PHOTOS:
+             1. Upload your image to the images/ folder on GitHub
+             2. Copy one of the blocks below and paste it before
+                the closing </div> of swiper-wrapper, then update:
+                - src="images/YOUR-FILENAME.jpeg"
+                - alt="Brief description"
+                - The caption inside <span> (optional)
+             ===================================================== -->
+
+        <div class="swiper-slide">
+          <img src="images/BBCD2F86-F211-45DB-BCED-E53C4C2DB2AA.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
         </div>
-        <div class="gallery-item gallery-item--tall" data-animate>
-          <img src="images/gallery-2.jpg" alt="Dark feature wall with wood flooring - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Feature Wall</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/4E5A4006-9C64-4E7B-B1BA-63D0799ADC05.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
         </div>
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-3.jpg" alt="Painted staircase with white banisters - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Staircase &amp; Banisters</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/99F7E429-D5C7-456E-BF7D-F711C905740D.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
         </div>
-        <div class="gallery-item" data-animate>
-          <img src="images/gallery-4.jpg" alt="Bright hallway with stairs after decoration - CGS Painting and Decorating" loading="lazy" onerror="this.parentElement.classList.add('gallery-item--placeholder')" />
-          <div class="gallery-overlay">
-            <span>Hallway &amp; Landing</span>
-          </div>
+
+        <div class="swiper-slide">
+          <img src="images/A73E09E3-B057-427C-84A2-F5988127CF72.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
         </div>
+
+        <div class="swiper-slide">
+          <img src="images/79A704D1-898C-40EE-AADF-1B4514D8C517.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/1ABD218E-A159-4E29-B77E-15A01A3B5291.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/E2A531C1-9801-424A-A5EB-45B5EEBE8BB3.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/1D8F8F7F-C5F0-4659-9F75-1F086170505B.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/D39928F4-4908-464C-9C02-72DC6C2DB4F5.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/477C33FC-4F12-4025-9A90-3705E2948C8F.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/96FC9925-43FF-4BD1-8C7B-A58CCF2C0162.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/26854E70-5C93-4F88-8A1D-B5E64D564F5A.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/C6F0EE83-AF77-40E2-98BE-87C407E0646B_1_201_a.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/6AA81563-22B5-4AC0-A6BB-45F5F0737B05_4_5005_c.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/536F7813-E17B-469E-A39F-55278FC3C3BA.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/68CE0429-81B5-4110-9054-BE8C026B927B.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/411F3971-2772-4433-A714-3654BEEAA91E.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/EEA84CCC-AFC4-45C2-B164-9162BF875DDE.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/B7A28C08-880D-4107-9634-F591B1082FBD.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/29385D41-D34A-4D64-8732-45E5F471F143.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/2898B099-3696-460F-ABA0-296CE7425304.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="images/51477450-CE37-4A12-A3FE-354B0571544D.jpeg" alt="Painting and decorating project - CGS" loading="lazy" />
+          <div class="swiper-slide-caption"><span>Recent Project</span></div>
+        </div>
+
+        <!-- ADD MORE SLIDES HERE — just copy a block above -->
+
       </div>
+
+      <!-- Navigation arrows -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- Dot pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="container">
       <div class="gallery-cta" data-animate>
         <p>See more of our work on Facebook</p>
         <a href="https://www.facebook.com/share/1ArBJ9NBdK/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -255,7 +371,7 @@
               <div class="review-avatar">J</div>
               <div>
                 <strong>Verified Customer</strong>
-                <span>Hallway, Stairs &amp; Landing — Rotherham</span>
+                <span>Hallway, Stairs &amp; Landing</span>
               </div>
             </div>
             <div class="review-source">
@@ -274,7 +390,7 @@
               <div class="review-avatar">S</div>
               <div>
                 <strong>Verified Customer</strong>
-                <span>Interior Decoration — Lincoln</span>
+                <span>Interior Decoration</span>
               </div>
             </div>
             <div class="review-source">
@@ -293,7 +409,7 @@
               <div class="review-avatar">M</div>
               <div>
                 <strong>Verified Customer</strong>
-                <span>Full Room Makeover — Doncaster</span>
+                <span>Full Room Makeover</span>
               </div>
             </div>
             <div class="review-source">
@@ -321,7 +437,14 @@
       </div>
       <div class="contact-grid">
         <div class="contact-form-wrap" data-animate>
-          <form class="contact-form" action="https://formspree.io/f/cgswain@outlook.com" method="POST">
+          <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+            <input type="hidden" name="access_key" value="8aa358cf-bd2b-40ba-8560-87f58a9bfe6d" />
+            <!-- Where replies go -->
+            <input type="hidden" name="subject" value="New Quote Request — CGS Painting &amp; Decorating" />
+            <input type="hidden" name="from_name" value="CGS Website" />
+            <!-- Honeypot spam protection -->
+            <input type="checkbox" name="botcheck" style="display:none" />
+
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name <span>*</span></label>
@@ -356,9 +479,10 @@
               <label for="message">Tell Us About the Job <span>*</span></label>
               <textarea id="message" name="message" rows="4" placeholder="Describe the work needed, number of rooms, any specific requirements..." required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn--full">
+            <button type="submit" class="btn btn-primary btn--full" id="submitBtn">
               <i class="fas fa-paper-plane"></i> Send My Request
             </button>
+            <div id="formResult" class="form-result" aria-live="polite"></div>
           </form>
         </div>
         <div class="contact-info" data-animate>
@@ -389,7 +513,7 @@
               <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <span>Location</span>
-                <p>Based in Lincoln — happy to travel.<br/>Regularly working across Lincolnshire, Rotherham, Doncaster &amp; beyond.</p>
+                <p>Based in Lincoln — happy to travel.<br/>Distance is never a barrier.</p>
               </div>
             </div>
             <div class="contact-free-quote">
@@ -452,7 +576,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; <span id="year"></span> CGS Painting &amp; Decorating. All rights reserved.</p>
-        <p>Based in Lincoln &bull; Free Quotes &bull; <a href="tel:07935133483">07935 133 483</a></p>
+        <p>Based in Lincoln &bull; Happy to Travel &bull; <a href="tel:07935133483">07935 133 483</a></p>
       </div>
     </div>
   </footer>
@@ -462,6 +586,7 @@
     <i class="fas fa-phone"></i>
   </a>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
