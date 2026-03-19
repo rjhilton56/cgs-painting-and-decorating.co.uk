@@ -578,6 +578,126 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .gallery-cta .btn-outline i { color: #1877F2; }
 
 /* === REVIEWS === */
+
+/* Summary bar */
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 32px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
+}
+.reviews-summary-rating {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.reviews-summary-score {
+  font-family: var(--font-head);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.reviews-summary-count {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+/* Ticker */
+.reviews-ticker-wrap {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 48px;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
+}
+.reviews-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: reviewsTicker 110s linear infinite;
+}
+.reviews-ticker-wrap:hover .reviews-track {
+  animation-play-state: paused;
+}
+@keyframes reviewsTicker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-card {
+  flex-shrink: 0;
+  width: 300px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+.reviews-ticker-wrap:hover .ticker-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+.ticker-stars {
+  color: var(--yellow);
+  font-size: 0.85rem;
+  display: flex;
+  gap: 3px;
+}
+.ticker-quote {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text-mid);
+  font-style: italic;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ticker-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.ticker-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.ticker-author strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+.ticker-author span {
+  font-size: 0.72rem;
+  color: var(--text-light);
+}
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1032,6 +1152,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* Reviews */
   .reviews-grid { grid-template-columns: 1fr; }
+  .reviews-summary { flex-direction: column; align-items: flex-start; padding: 20px; }
+  .reviews-ticker-wrap { -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent); mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent); }
 
   /* Contact */
   .form-row { grid-template-columns: 1fr; }
