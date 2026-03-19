@@ -129,6 +129,102 @@ if (form) {
   });
 }
 
+// === REVIEWS TICKER — auto-scroll + touch/mouse drag ===
+(function () {
+  const wrap  = document.querySelector('.reviews-ticker-wrap');
+  const track = document.getElementById('reviewsTrack');
+  if (!wrap || !track) return;
+
+  // Cancel CSS animation; JS drives the scroll from here
+  track.style.animation = 'none';
+
+  const AUTO_SPEED = 0.55; // px per frame at 60 fps (~33 px/s)
+
+  let x            = 0;
+  let halfWidth    = 0;
+  let pointerDown  = false;
+  let startPtrX    = 0;
+  let startX       = 0;
+  let prevPtrX     = 0;
+  let velocity     = 0;
+  let coasting     = false;
+  let hovered      = false;
+
+  function measure() { halfWidth = track.scrollWidth / 2; }
+
+  function clamp(val) {
+    if (val <= -halfWidth) return val + halfWidth;
+    if (val > 0)           return val - halfWidth;
+    return val;
+  }
+
+  function tick() {
+    if (pointerDown) {
+      // position updated by pointer events — nothing to do here
+    } else if (coasting) {
+      x = clamp(x + velocity);
+      velocity *= 0.90;
+      if (Math.abs(velocity) < 0.1) { coasting = false; velocity = 0; }
+    } else if (!hovered) {
+      x = clamp(x - AUTO_SPEED);
+    }
+    track.style.transform = `translateX(${x}px)`;
+    requestAnimationFrame(tick);
+  }
+
+  // ---- Touch ----
+  wrap.addEventListener('touchstart', e => {
+    const t = e.touches[0];
+    pointerDown = true; coasting = false; velocity = 0;
+    startPtrX = prevPtrX = t.clientX; startX = x;
+  }, { passive: true });
+
+  wrap.addEventListener('touchmove', e => {
+    if (!pointerDown) return;
+    const t   = e.touches[0];
+    velocity  = t.clientX - prevPtrX;
+    prevPtrX  = t.clientX;
+    x = clamp(startX + (t.clientX - startPtrX));
+  }, { passive: true });
+
+  wrap.addEventListener('touchend', () => {
+    pointerDown = false;
+    // finger swiping right → velocity positive → content should move right → add to x
+    // finger swiping left  → velocity negative → content moves left faster → add to x
+    coasting = Math.abs(velocity) > 0.5;
+    // velocity from touchmove is finger delta, same direction as x, so use directly
+  });
+
+  // ---- Mouse drag ----
+  wrap.addEventListener('mousedown', e => {
+    pointerDown = true; coasting = false; velocity = 0;
+    startPtrX = prevPtrX = e.clientX; startX = x;
+    wrap.style.cursor = 'grabbing';
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!pointerDown) return;
+    velocity = e.clientX - prevPtrX;
+    prevPtrX = e.clientX;
+    x = clamp(startX + (e.clientX - startPtrX));
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!pointerDown) return;
+    pointerDown = false;
+    wrap.style.cursor = '';
+    coasting = Math.abs(velocity) > 0.5;
+  });
+
+  // ---- Hover pause (desktop idle only) ----
+  wrap.addEventListener('mouseenter', () => { hovered = true; });
+  wrap.addEventListener('mouseleave', () => { hovered = false; });
+
+  measure();
+  requestAnimationFrame(tick);
+})();
+
 // === SMOOTH SCROLL ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {

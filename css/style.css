@@ -617,6 +617,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   position: relative;
   margin-bottom: 48px;
+  cursor: grab;
   -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
   mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
 }
