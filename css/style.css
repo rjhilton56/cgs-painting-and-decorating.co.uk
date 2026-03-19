@@ -465,6 +465,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.65;
 }
 
+/* Burn-off highlight card */
+.service-card--highlight {
+  border-color: rgba(75,186,213,0.35);
+  background: rgba(75,186,213,0.07);
+}
+/* Secondary (available but not preferred) cards — visually quieter */
+.service-card--secondary {
+  opacity: 0.78;
+}
+.service-card--secondary .service-icon { background: rgba(255,255,255,0.06); }
+.service-card--secondary:hover { opacity: 1; }
+
 /* === GALLERY / SWIPER === */
 .gallery-swiper {
   width: 100%;
