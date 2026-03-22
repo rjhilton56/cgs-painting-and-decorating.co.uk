@@ -1052,6 +1052,14 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .footer-bottom a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
 .footer-bottom a:hover { color: var(--primary); }
+.footer-credit {
+  text-align: center;
+  padding-bottom: 16px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+}
+.footer-credit a { color: rgba(255,255,255,0.25); transition: color var(--transition); }
+.footer-credit a:hover { color: rgba(255,255,255,0.5); }
 
 /* === FLOATING CALL BUTTON === */
 .float-call {
